@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:registration_ui/login-controller.dart';
 
 import 'Animation/FadeAnimation.dart';
 
@@ -9,6 +10,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final myControllerUser = TextEditingController();
+  final myControllerPass = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -99,6 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             child: TextField(
+                              controller: myControllerUser,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: 'Username',
@@ -111,6 +115,7 @@ class _LoginPageState extends State<LoginPage> {
                           Container(
                             padding: EdgeInsets.all(10),
                             child: TextField(
+                              controller: myControllerPass,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: 'Password',
@@ -140,24 +145,28 @@ class _LoginPageState extends State<LoginPage> {
                 FadeAnimation(
                     1.9,
                     Container(
-                      height: 50,
-                      margin: EdgeInsets.symmetric(horizontal: 60),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(50),
-                        color: Color.fromRGBO(49, 39, 79, 1),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color.fromRGBO(49, 39, 79, .3),
-                            blurRadius: 10,
-                            offset: Offset(0, 10),
-                          )
-                        ],
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Login',
-                          style: TextStyle(
-                            color: Colors.white,
+                      /* onPressed: () => httpService(
+                          myControllerUser.text, myControllerPass.text), */
+                      child: Container(
+                        height: 50,
+                        margin: EdgeInsets.symmetric(horizontal: 60),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Color.fromRGBO(49, 39, 79, 1),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color.fromRGBO(49, 39, 79, .3),
+                              blurRadius: 10,
+                              offset: Offset(0, 10),
+                            )
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            'Login',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
@@ -165,14 +174,16 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 15,
                 ),
-                FadeAnimation(2,Center(
-                  child: Text(
-                    'Create Account',
-                    style: TextStyle(
-                      color: Color.fromRGBO(196, 135, 198, .7),
-                    ),
-                  ),
-                )),
+                FadeAnimation(
+                    2,
+                    Center(
+                      child: Text(
+                        'Create Account',
+                        style: TextStyle(
+                          color: Color.fromRGBO(196, 135, 198, .7),
+                        ),
+                      ),
+                    )),
               ],
             ),
           ),
