@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:registration_ui/login-controller.dart';
+import 'package:registration_ui/login/login-controller.dart';
 
-import 'Animation/FadeAnimation.dart';
+import '../Animation/FadeAnimation.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -143,24 +143,32 @@ class _LoginPageState extends State<LoginPage> {
                     )),
                 SizedBox(height: 30),
                 FadeAnimation(
-                    1.9,
-                    Container(
-                      /* onPressed: () => httpService(
-                          myControllerUser.text, myControllerPass.text), */
-                      child: Container(
-                        height: 50,
-                        margin: EdgeInsets.symmetric(horizontal: 60),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Color.fromRGBO(49, 39, 79, 1),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color.fromRGBO(49, 39, 79, .3),
-                              blurRadius: 10,
-                              offset: Offset(0, 10),
-                            )
-                          ],
-                        ),
+                  1.9,
+                  Container(
+                    /*  */
+                    child: Container(
+                      height: 50,
+                      margin: EdgeInsets.symmetric(horizontal: 60),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Color.fromRGBO(49, 39, 79, 1),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromRGBO(49, 39, 79, .3),
+                            blurRadius: 10,
+                            offset: Offset(0, 10),
+                          )
+                        ],
+                      ),
+                      child: RaisedButton(
+                        onPressed: () {
+                          httpService(
+                            myControllerUser.text,
+                            myControllerPass.text,
+                          );
+                          
+                        },
+                        color: Colors.transparent,
                         child: Center(
                           child: Text(
                             'Login',
@@ -170,7 +178,9 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                    )),
+                    ),
+                  ),
+                ),
                 SizedBox(
                   height: 15,
                 ),
