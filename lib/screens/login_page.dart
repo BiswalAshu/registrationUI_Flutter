@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:registration_ui/login/login-controller.dart';
+import 'package:registration_ui/model/user-info.dart';
+import 'package:registration_ui/screens/profile.dart';
+
+import 'package:registration_ui/services/login-controller.dart';
 
 import '../Animation/FadeAnimation.dart';
 
@@ -160,13 +163,20 @@ class _LoginPageState extends State<LoginPage> {
                           )
                         ],
                       ),
-                      child: RaisedButton(
-                        onPressed: () {
-                          httpService(
+                      child: FlatButton(
+                        onPressed: () async {
+                          MyService service = new MyService();
+
+                          UserInfo userinfo = await service.httpService(
                             myControllerUser.text,
                             myControllerPass.text,
                           );
-                          
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => ProfilePage(userinfo),
+                            ),
+                          );
                         },
                         color: Colors.transparent,
                         child: Center(
